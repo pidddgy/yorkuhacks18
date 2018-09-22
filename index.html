@@ -2,7 +2,7 @@
   <head>
     <!-- Material Design Lite -->
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
-    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.deep_purple-blue.min.css">
     <!-- Material Design icon font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <meta charset="UTF-8"> 
@@ -37,10 +37,12 @@
                         <p>
                           {{ item.message }}
                         </p>
-                      </div>
-                      <div class="mdl-card__supporting-text">
-                          <p class="mdl-text mdl-text--colored mdl-js-button">
-                          </p>
+                        <form action="#">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textBoxForReply">
+                              <input class="mdl-textfield__input" type="text" id="reply">
+                              <label class="mdl-textfield__label" for="reply">Your answer...</label>
+                            </div>
+                          </form>
                       </div>
                   </div>
               </li>
