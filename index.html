@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
     <!-- Material Design icon font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <meta charset="UTF-8"> 
   </head>
   <body>
     <!-- Always shows a header, even in smaller screens. -->
@@ -17,7 +18,7 @@
       </header>
       <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">Title</span>
-        <nav class="mdl-navigation">
+        <nav class="mdl-navigation">  
           <a class="mdl-navigation__link" href="">Stream</a>
           <a class="mdl-navigation__link" href="">Profile</a>
           <a class="mdl-navigation__link" href="">Your stats</a>
@@ -25,9 +26,28 @@
       </div>
       <main class="mdl-layout__content">
         <div class="page-content">
-          <!-- Your content goes here -->
+
+            <ul id="stream">
+              <li class="item" v-for="item in items">
+                  <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                      <div class="mdl-card__title">
+                          <h2 class="mdl-card__title-text"> {{ item.author }} </h2>
+                        </div>
+                      <div class="mdl-card__supporting-text">
+                        <p>
+                          {{ item.message }}
+                        </p>
+                      </div>
+                  </div>
+              </li>
+            </ul>
+
         </div>
       </main>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="stylesheet.css">
   </body>
 </html>
