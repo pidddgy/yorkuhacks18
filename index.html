@@ -29,6 +29,7 @@
 
             <ul id="stream">
               <li class="item" v-for="item in items">
+
                   <div class="demo-card-wide mdl-card mdl-shadow--2dp">
                       <div class="mdl-card__title">
                           <h3 class="mdl-card__title-text"> {{ item.title }} - {{ item.author }}  </h2>
@@ -45,6 +46,41 @@
                           </form>
                       </div>
                   </div>
+
+                  <ul class="demo-list-icon mdl-list" id="answers">
+
+                    <div v-if="item.showLess">
+                        <li class="mdl-list__item answer">
+                            <span class="mdl-list__item-primary-content" v-for="comment in item.comments.length > 3 ? item.comments.slice(item.comments.length - 3, item.comments.length) : item.comments">
+                              <strong> {{ comment.author }} </strong>
+                              <br/>
+                              <p id="commentText"> {{ comment.text }} </p>
+                            </span>
+                          </li>
+                          <div v-if="item.comments.length > 3">
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" @click="item.showLess = false">
+                                SHOW MORE
+                            </button>
+                          </div>
+                    </div>
+
+                    <div v-else>
+                        <li class="mdl-list__item answer">
+                            <span class="mdl-list__item-primary-content" v-for="comment in item.comments">
+                              <strong> {{ comment.author }} </strong>
+                              <br/>
+                              <p id="commentText"> {{ comment.text }} </p>
+                            </span>
+                          </li>
+                          <div v-if="item.comments.length > 3">
+                              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" @click="item.showLess = true">
+                                  SHOW LESS
+                              </button>
+                          </div>
+                    </div>
+
+                  </ul>
+                    
               </li>
             </ul>
 

@@ -2,8 +2,19 @@
   CSS GOES HERE
 */
 
-#stream{
+#stream, #answers{
   list-style: none;
+}
+
+#answers {
+  width:60vw;
+  margin:0;
+  padding:0;
+  padding-top: 10px;
+}
+
+.item{
+  display: grid;
 }
 
 .demo-card-wide.mdl-card {
@@ -26,4 +37,12 @@ ul {
 .demo-card-wide > .mdl-card__title {
   color:white;
   background-color: #602dad;
+}
+
+.answer{
+  text-align:left;
+}
+
+#commentText {
+  word-break: break-all;
 }
