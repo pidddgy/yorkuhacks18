@@ -1,90 +1,20 @@
 var stream = new Vue({
   el: '#stream',
   data: {
-    items: [{
-        title: 'aaaaaa',
-        message: 'Foo',
-        author: 'sf',
-        showLess: true,
-        comments: [{
-            author: "Bob",
-            text: "ur question dumb and you should feel bad",
-          },
-          {
-            author: "AAAAAAAA",
-            text: "bepis",
-          },
-          {
-            author: "AAAAAAAA",
-            text: "many amount of posts dummy text",
-          },
-          {
-            author: "AAAAAAAA",
-            text: "many amount of posts dummy text",
-          },
-          {
-            author: "AAAAAAAA",
-            text: "many amount of posts dummy text",
-          },
-          {
-            author: "AAAAAAAA",
-            text: "many amount of posts dummy text",
-          },
-          {
-            author: "AAAAAAAA",
-            text: "many amount of posts dummy text",
-          },
-        ],
-      },
-
-      {
-        title: 'Bsdf',
-        message: 'Bar',
-        author: 'Anonymous',
-        showLess: true,
-        comments: [{
-            author: "Bob",
-            text: "ur question dumb and you should feel bad",
-          },
-          {
-            author: "AAAAAAAA",
-            text: "bepis",
-          },
-        ],
-      },
-
-      {
-        title: 'dummy value',
-        message: 'also dummy value',
-        author: 'sdfdff',
-        showLess: true,
-        comments: [{
-            author: "joe",
-            text: "asdf hi",
-          },
-          {
-            author: "asdf;lkjasdflkajsdflksdf",
-            text: "very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment very long dummy text for comment ",
-          },
-        ],
-      },
-
-      {
-        title: 'really long really long dummy text really long dummy text really long dummy text ',
-        message: 'also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text ',
-        author: 'sfsdfsdfsdff',
-        showLess: true,
-        comments: [{
-            author: "lil pump",
-            text: "gucci gang",
-          },
-          {
-            author: "AAAAAAAA",
-            text: "bepis",
-          },
-        ],
-      },
-    ]
+    items: []
+  },
+  methods: {
+    writeUserData: function (userId, name, email, imageUrl) {
+      var path = firebase.database().ref('items');
+      var payload = {
+        username: name,
+        email: email,
+        profile_picture : imageUrl
+      };
+      var res = path.push(payload);
+      path.set(payload);
+      console.log('user key', res.key);
+    }
   }
 })
 
@@ -112,3 +42,22 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 }
+
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyCzNBAbv0kASKMAlBV39JBdItzX9vYtRfc",
+  authDomain: "qa-hub-f34e2.firebaseapp.com",
+  databaseURL: "https://qa-hub-f34e2.firebaseio.com",
+  projectId: "qa-hub-f34e2",
+  storageBucket: "qa-hub-f34e2.appspot.com",
+  messagingSenderId: "321880200644"
+};
+firebase.initializeApp(config);
+
+var ref = firebase.database().ref(); 
+ref.on("value", function (snapshot) {
+  var el = document.getElementById('data');
+  //stream.$data.items = JSON.stringify(snapshot.val(), null, 2);
+  stream.$data.items = snapshot.val();
+  console.log(snapshot.val())
+});
