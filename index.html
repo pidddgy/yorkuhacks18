@@ -46,7 +46,8 @@
                     <br />
                     <br />
                     <br />
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect custom-buttons" v-on:Click="stream.writeComment(document.getElementById('reply').value, item.id)">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect custom-buttons" v-on:Click="stream.writeComment(document.getElementById('reply').value, item.id); document.getElementById
+                    ('reply').value = ''">
                       POST
                     </button>
                   </div>
@@ -60,8 +61,7 @@
                 <li class="mdl-list__item answer">
                   <span class="mdl-list__item-primary-content" v-for="comment in item.comments.length > 3 ? item.comments.slice(item.comments.length - 3, item.comments.length) : item.comments">
                     <h5> {{ comment.text }} </h5>
-                    <br />
-                    <h6 id="commentText"> - {{ comment.author }} </h6>
+                    <h6 id="commentText">{{ comment.author }} </h6>
                   </span>
                 </li>
                 <div v-if="item.comments.length > 3">
