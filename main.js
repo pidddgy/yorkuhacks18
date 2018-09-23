@@ -5,17 +5,10 @@ var stream = new Vue({
   },
   methods: {
     writeUserData: function (author, comments, message, showLess, title) {
-      var payload = {
-        author: author,
-        comments: comments,
-        message: message,
-        showLess: showLess,
-        title: title
-      };
       var path = firebase.database().ref('items');
       var newPayloadRef = path.push();
       newPayloadRef.set({
-        author: author,
+        author: name,
         comments: comments,
         message: message,
         showLess: showLess,
@@ -28,6 +21,7 @@ var stream = new Vue({
       var path = firebase.database().ref('items/' + postID + '/comments');
       path.push({
         text: text,
+        author:name,
       })
     }
   }
@@ -77,3 +71,4 @@ ref.on("value", function (snapshot) {
   console.log(snapshot.val())
 });
 
+var name = prompt("Enter your name");
