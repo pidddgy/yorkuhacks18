@@ -2,18 +2,17 @@ body {
 background-color: rgb(255, 255, 242);
 }
 
-#answers {
-  list-style: none;
-}
 
 #stream{
   margin-top: 40px;
 }
 
 #answers {
+  list-style: none;
   width: 60vw;
   margin: 0;
-  padding: 0;;
+  margin-bottom: 32px;
+  padding: 0;
 }
 
 .item {
@@ -48,6 +47,10 @@ ul {
 
 .answer {
   text-align: left;
+  width: 100%;
+  background-color: rgb(255, 255, 217);
+  border: rgb(255, 255, 122) 3px solid !important;
+  border-radius: 8px;
 }
 
 #commentText {
@@ -199,4 +202,9 @@ border-radius: 8px;
 .custom-buttons {
   background-color: #6200ea;
   color: white;
+}
+
+h6 {
+  margin: 0;
+  padding: 0;
 }
