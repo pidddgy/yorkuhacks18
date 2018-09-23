@@ -28,7 +28,7 @@ var stream = new Vue({
         author: name
       })
 
-      stream.givePoints(50);
+      stream.givePoints(10);
     },
     createUser: function (name) {
       var path = firebase.database().ref('users');
@@ -96,7 +96,6 @@ var refUsers = firebase.database().ref('/users');
 refUsers.on("value", function (snapshot) {
   //stream.$data.items = JSON.stringify(snapshot.val(), null, 2);
   stream.$data.users = snapshot.val();
-  console.log(snapshot.val())
 });
 
 var name = prompt("Enter your name");

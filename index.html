@@ -30,7 +30,7 @@
       <div class="page-content">
         <ul id="stream">
           <li class="item" v-for="item in items.items">
-            <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+            <div class="demo-card-wide mdl-card mdl-shadow--2dp custom-cards">
               <div class="mdl-card__title">
                 <h3 class="mdl-card__title-text"> {{ item.title }} - {{ item.author }} </h2>
               </div>
@@ -40,12 +40,12 @@
                 </p>
                 <form action="#">
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="reply">
-                    <label class="mdl-textfield__label" for="reply">Your answer...</label>
+                    <input class="mdl-textfield__input" type="text" id="reply" placeholder="Your Answer...">
+                    <label class="mdl-textfield__label" for="reply" place></label>
                     <br />
                     <br />
                     <br />
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" v-on:Click="stream.writeComment(document.getElementById('reply').value, item.id)">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect custom-buttons" v-on:Click="stream.writeComment(document.getElementById('reply').value, item.id)">
                       POST
                     </button>
                   </div>
@@ -87,9 +87,10 @@
             </ul>
 
           </li>
-          <div v-if="stream.showLeaderboard">
-            <ul>
-              <li v-for="user in users">{{ user.name }} {{ user.points }}</li>
+          <div v-if="showLeaderboard" id="leaderboardViewThingy">
+            <h3>Leaderboard</h3>
+            <ul></ul>
+              <li class="leaderboard-item" v-for="user in users"> <b>{{ user.name }}</b> - {{ user.points }}</li>
             </ul>
           </div>
         </ul>

@@ -1,17 +1,24 @@
-#stream,
+body {
+background-color: rgb(255, 255, 242);
+}
+
 #answers {
   list-style: none;
+}
+
+#stream{
+  margin-top: 40px;
 }
 
 #answers {
   width: 60vw;
   margin: 0;
-  padding: 0;
-  padding-top: 10px;
+  padding: 0;;
 }
 
 .item {
   display: grid;
+  width: 100vw;
 }
 
 .demo-card-wide.mdl-card {
@@ -22,14 +29,21 @@
   font-size: 18px;
 }
 
+li {
+  text-align: left;
+  width: 120px;
+}
+
 ul {
   width: 60%;
   margin: auto;
+  list-style: none;
+  font-size: 24px;
 }
 
 .demo-card-wide>.mdl-card__title {
   color: white;
-  background-color: #602dad;
+  background-color: #6200ea;
 }
 
 .answer {
@@ -40,22 +54,30 @@ ul {
   word-break: break-all;
 }
 
+.heading {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
 #addPost {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 56px;
   padding: 2vw;
   position: fixed;
   bottom: 10;
   right: 23;
+  background-color: #6200ea;
 }
 
 #leaderboard {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 56px;
   padding: 2vw;
   position: fixed;
   bottom: 10;
   left: 23;
+  background-color: #6200ea;
 }
 
 .modal {
@@ -143,4 +165,38 @@ ul {
   position: fixed;
   bottom: 10;
   left: 23;
+}
+
+.leaderboard-item{
+  margin-bottom: 20px;
+}
+
+#leaderboardViewThingy{
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 130px;
+  height:100vw;
+  background-color: #fbf9ff;
+
+border: #6200ea 4px solid;
+
+padding: 36px;
+
+border-radius: 8px;
+}
+
+.mdl-layout__header{
+  background-color: #6200ea;
+}
+
+.custom-cards {
+  border: #6200ea 3px solid !important;
+  border-radius: 8px;
+  background-color: #fbf9ff;
+}
+
+.custom-buttons {
+  background-color: #6200ea;
+  color: white;
 }
