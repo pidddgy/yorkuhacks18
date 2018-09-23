@@ -2,7 +2,7 @@
   <head>
     <!-- Material Design Lite -->
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
-    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.deep_purple-blue.min.css">
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.deep_purple-indigo.min.css">
     <!-- Material Design icon font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <meta charset="UTF-8"> 
@@ -83,7 +83,57 @@
                     
               </li>
             </ul>
+            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored dialog-button" id="addPost">
+                <i class="material-icons">add</i>
+            </button>  
+            <div id="myModal" class="modal">
 
+                <!-- Modal content -->
+                <div id = "overlay"></div>
+                <div class="modal-content">
+                  <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                      <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Post your question</h2>
+                      <span class="close"> <i class="material-icons"> close </i> </span>
+                      </div>
+                      <div class="mdl-card__supporting-text">
+                          <form action="#">
+                              <div class="mdl-textfield mdl-js-textfield">
+                                <input class="mdl-textfield__input postQuestionTextBox" type="text" class="wordBreakable">
+                                <label class="mdl-textfield__label" for="sample1">Question</label>
+                              </div>
+                              <br/>
+                              <div class="mdl-textfield mdl-js-textfield">
+                                  <input class="mdl-textfield__input postQuestionTextBox" type="text">
+                                  <label class="mdl-textfield__label" for="sample1">Additional Text</label>
+                                </div>
+                              <p style="width:50vw;">
+                                Difficulty of question
+                                <input id = "questionSlider" class="mdl-slider mdl-js-slider" type="range" min="0" max="100" value="0" tabindex="0" step="10">
+                              </p>
+                              <p> Anonymous? </p>
+                              <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
+                                  <input type="checkbox" id="switch-1" class="mdl-switch__input" checked>
+                                  <span class="mdl-switch__label"></span>
+                              </label>
+                             
+                              
+                            </form>   
+                      </div>
+                      <div class="mdl-card__actions mdl-card--border">
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                          Post
+                        </a>
+                      </div>
+                      <div class="mdl-card__menu">
+                        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                          <i class="material-icons">share</i>
+                        </button>
+                      </div>
+                    </div>
+                </div>
+              
+              </div>
         </div>
       </main>
     </div>
