@@ -1,145 +1,148 @@
 <html>
-  <head>
-    <!-- Material Design Lite -->
-    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
-    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.deep_purple-indigo.min.css">
-    <!-- Material Design icon font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <meta charset="UTF-8"> 
-  </head>
-  <body>
-    <!-- Always shows a header, even in smaller screens. -->
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-      <header class="mdl-layout__header">
-        <div class="mdl-layout__header-row">
-          <!-- Title -->
-          <span class="mdl-layout-title">Kasio</span>
-        </div>
-      </header>
-      <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">Title</span>
-        <nav class="mdl-navigation">  
-          <a class="mdl-navigation__link" href="">Stream</a>
-          <a class="mdl-navigation__link" href="">Profile</a>
-          <a class="mdl-navigation__link" href="">Your stats</a>
-        </nav>
+
+<head>
+  <!-- Material Design Lite -->
+  <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.deep_purple-indigo.min.css">
+  <!-- Material Design icon font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <meta charset="UTF-8">
+</head>
+
+<body>
+  <!-- Always shows a header, even in smaller screens. -->
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <span class="mdl-layout-title">Kasio</span>
       </div>
-      <main class="mdl-layout__content">
-        <div class="page-content">
-
-            <ul id="stream">
-              <li class="item" v-for="item in items">
-
-                  <div class="demo-card-wide mdl-card mdl-shadow--2dp">
-                      <div class="mdl-card__title">
-                          <h3 class="mdl-card__title-text"> {{ item.title }} - {{ item.author }}  </h2>
-                      </div>
-                      <div class="mdl-card__supporting-text">
-                        <p>
-                          {{ item.message }}
-                        </p>
-                        <form action="#">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="text" id="reply">
-                              <label class="mdl-textfield__label" for="reply">Your answer...</label>
-                            </div>
-                          </form>
-                      </div>
-                  </div>
-
-                  <ul class="demo-list-icon mdl-list" id="answers">
-
-                    <div v-if="item.showLess">
-                        <li class="mdl-list__item answer">
-                            <span class="mdl-list__item-primary-content" v-for="comment in item.comments.length > 3 ? item.comments.slice(item.comments.length - 3, item.comments.length) : item.comments">
-                              <strong> {{ comment.author }} </strong>
-                              <br/>
-                              <p id="commentText"> {{ comment.text }} </p>
-                            </span>
-                          </li>
-                          <div v-if="item.comments.length > 3">
-                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" @click="item.showLess = false">
-                                SHOW MORE
-                            </button>
-                          </div>
-                    </div>
-
-                    <div v-else>
-                        <li class="mdl-list__item answer">
-                            <span class="mdl-list__item-primary-content" v-for="comment in item.comments">
-                              <strong> {{ comment.author }} </strong>
-                              <br/>
-                              <p id="commentText"> {{ comment.text }} </p>
-                            </span>
-                          </li>
-                          <div v-if="item.comments.length > 3">
-                              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" @click="item.showLess = true">
-                                  SHOW LESS
-                              </button>
-                          </div>
-                    </div>
-
-                  </ul>
-                    
-              </li>
-            </ul>
-            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored dialog-button" id="addPost">
-                <i class="material-icons">add</i>
-            </button>  
-            <div id="myModal" class="modal">
-
-                <!-- Modal content -->
-                <div id = "overlay"></div>
-                <div class="modal-content">
-                  <div class="demo-card-wide mdl-card mdl-shadow--2dp">
-                      <div class="mdl-card__title">
-                        <h2 class="mdl-card__title-text">Post your question</h2>
-                      <span class="close"> <i class="material-icons"> close </i> </span>
-                      </div>
-                      <div class="mdl-card__supporting-text">
-                          <form action="#">
-                              <div class="mdl-textfield mdl-js-textfield">
-                                <input class="mdl-textfield__input postQuestionTextBox" type="text" class="wordBreakable">
-                                <label class="mdl-textfield__label" for="sample1">Question</label>
-                              </div>
-                              <br/>
-                              <div class="mdl-textfield mdl-js-textfield">
-                                  <input class="mdl-textfield__input postQuestionTextBox" type="text">
-                                  <label class="mdl-textfield__label" for="sample1">Additional Text</label>
-                                </div>
-                              <p style="width:50vw;">
-                                Difficulty of question
-                                <input id = "questionSlider" class="mdl-slider mdl-js-slider" type="range" min="0" max="100" value="0" tabindex="0" step="10">
-                              </p>
-                              <p> Anonymous? </p>
-                              <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
-                                  <input type="checkbox" id="switch-1" class="mdl-switch__input" checked>
-                                  <span class="mdl-switch__label"></span>
-                              </label>
-                             
-                              
-                            </form>   
-                      </div>
-                      <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                          Post
-                        </a>
-                      </div>
-                      <div class="mdl-card__menu">
-                        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                          <i class="material-icons">share</i>
-                        </button>
-                      </div>
-                    </div>
-                </div>
-              
-              </div>
-        </div>
-      </main>
+    </header>
+    <div class="mdl-layout__drawer">
+      <span class="mdl-layout-title">Title</span>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="">Stream</a>
+        <a class="mdl-navigation__link" href="">Profile</a>
+        <a class="mdl-navigation__link" href="">Your stats</a>
+      </nav>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <script src="main.js"></script>
-    <link rel="stylesheet" href="stylesheet.css">
-  </body>
+    <main class="mdl-layout__content">
+      <div class="page-content">
+        <ul id="stream">
+          <li class="item" v-for="item in items">
+            <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+              <div class="mdl-card__title">
+                <h3 class="mdl-card__title-text"> {{ item.title }} - {{ item.author }} </h2>
+              </div>
+              <div class="mdl-card__supporting-text">
+                <p>
+                  {{ item.message }}
+                </p>
+                <form action="#">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="reply">
+                    <label class="mdl-textfield__label" for="reply">Your answer...</label>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <ul class="demo-list-icon mdl-list" id="answers">
+
+              <div v-if="item.showLess">
+                <li class="mdl-list__item answer">
+                  <span class="mdl-list__item-primary-content" v-for="comment in item.comments.length > 3 ? item.comments.slice(item.comments.length - 3, item.comments.length) : item.comments">
+                    <strong> {{ comment.author }} </strong>
+                    <br />
+                    <p id="commentText"> {{ comment.text }} </p>
+                  </span>
+                </li>
+                <div v-if="item.comments.length > 3">
+                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" @click="item.showLess = false">
+                    SHOW MORE
+                  </button>
+                </div>
+              </div>
+
+              <div v-else>
+                <li class="mdl-list__item answer">
+                  <span class="mdl-list__item-primary-content" v-for="comment in item.comments">
+                    <strong> {{ comment.author }} </strong>
+                    <br />
+                    <p id="commentText"> {{ comment.text }} </p>
+                  </span>
+                </li>
+                <div v-if="item.comments.length > 3">
+                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" @click="item.showLess = true">
+                    SHOW LESS
+                  </button>
+                </div>
+              </div>
+
+            </ul>
+
+          </li>
+        </ul>
+        <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored dialog-button"
+          id="addPost">
+          <i class="material-icons">add</i>
+        </button>
+        <div id="myModal" class="modal">
+
+          <!-- Modal content -->
+          <div id="overlay"></div>
+          <div class="modal-content">
+            <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+              <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Post your question</h2>
+                <span class="close"> <i class="material-icons"> close </i> </span>
+              </div>
+              <div class="mdl-card__supporting-text">
+                <form action="#">
+                  <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input postQuestionTextBox" type="text" class="wordBreakable">
+                    <label class="mdl-textfield__label" for="sample1">Question</label>
+                  </div>
+                  <br />
+                  <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input postQuestionTextBox" type="text">
+                    <label class="mdl-textfield__label" for="sample1">Additional Text</label>
+                  </div>
+                  <p style="width:50vw;">
+                    Difficulty of question
+                    <input id="questionSlider" class="mdl-slider mdl-js-slider" type="range" min="0" max="100" value="0"
+                      tabindex="0" step="10">
+                  </p>
+                  <p> Anonymous? </p>
+                  <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
+                    <input type="checkbox" id="switch-1" class="mdl-switch__input" checked>
+                    <span class="mdl-switch__label"></span>
+                  </label>
+
+
+                </form>
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                  Post
+                </a>
+              </div>
+              <div class="mdl-card__menu">
+                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                  <i class="material-icons">share</i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="main.js"></script>
+  <link rel="stylesheet" href="stylesheet.css">
+</body>
+
 </html>

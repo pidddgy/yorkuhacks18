@@ -1,14 +1,12 @@
 var stream = new Vue({
   el: '#stream',
   data: {
-    items: [
-      { 
+    items: [{
         title: 'aaaaaa',
         message: 'Foo',
         author: 'sf',
         showLess: true,
-        comments: [
-          {
+        comments: [{
             author: "Bob",
             text: "ur question dumb and you should feel bad",
           },
@@ -39,13 +37,12 @@ var stream = new Vue({
         ],
       },
 
-      { 
+      {
         title: 'Bsdf',
         message: 'Bar',
         author: 'Anonymous',
         showLess: true,
-        comments: [
-          {
+        comments: [{
             author: "Bob",
             text: "ur question dumb and you should feel bad",
           },
@@ -56,13 +53,12 @@ var stream = new Vue({
         ],
       },
 
-      { 
+      {
         title: 'dummy value',
         message: 'also dummy value',
         author: 'sdfdff',
         showLess: true,
-        comments: [
-          {
+        comments: [{
             author: "joe",
             text: "asdf hi",
           },
@@ -73,13 +69,12 @@ var stream = new Vue({
         ],
       },
 
-      { 
+      {
         title: 'really long really long dummy text really long dummy text really long dummy text ',
-        message: 'also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text ', 
+        message: 'also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text also really long dummy text ',
         author: 'sfsdfsdfsdff',
         showLess: true,
-        comments: [
-          {
+        comments: [{
             author: "lil pump",
             text: "gucci gang",
           },
@@ -102,18 +97,18 @@ var modal = document.getElementById('myModal');
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
-document.getElementById('addPost').onclick = function() {
-    modal.style.display = "block";
+document.getElementById('addPost').onclick = function () {
+  modal.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
+span.onclick = function () {
+  modal.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 }

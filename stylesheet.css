@@ -1,15 +1,16 @@
-#stream, #answers{
+#stream,
+#answers {
   list-style: none;
 }
 
 #answers {
-  width:60vw;
-  margin:0;
-  padding:0;
+  width: 60vw;
+  margin: 0;
+  padding: 0;
   padding-top: 10px;
 }
 
-.item{
+.item {
   display: grid;
 }
 
@@ -22,21 +23,21 @@
 }
 
 li.item {
-  margin: 5vh;   
+  margin: 5vh;
 }
 
 ul {
-  width:60%;
-  margin:auto;
+  width: 60%;
+  margin: auto;
 }
 
-.demo-card-wide > .mdl-card__title {
-  color:white;
+.demo-card-wide>.mdl-card__title {
+  color: white;
   background-color: #602dad;
 }
 
-.answer{
-  text-align:left;
+.answer {
+  text-align: left;
 }
 
 #commentText {
@@ -44,24 +45,31 @@ ul {
 }
 
 #addPost {
-  width:50px;
-  height:50px;
-  padding:2vw;
-  position:fixed;
-  bottom:10;
-  right:23;
+  width: 50px;
+  height: 50px;
+  padding: 2vw;
+  position: fixed;
+  bottom: 10;
+  right: 23;
 }
 
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  padding-top: 100px;
+  /* Location of the box */
   left: 20vw;
   top: 0;
-  width: 60vw; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
+  width: 60vw;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
 }
 
 /* Modal Content */
@@ -76,7 +84,7 @@ ul {
   float: right;
   font-size: 28px;
   font-weight: bold;
-  padding-left:68%;
+  padding-left: 68%;
 }
 
 .close:hover,
@@ -87,17 +95,17 @@ ul {
 }
 
 .postQuestionTextBox {
-  width:50vw;
+  width: 50vw;
 }
 
 #overlay {
-  position:fixed;
+  position: fixed;
   top: 0;
   left: 0;
-  width:100vw;
-  height:100vw;
+  width: 100vw;
+  height: 100vw;
   background-color: black;
-  opacity:0.5;
+  opacity: 0.5;
 }
 
 .wordBreakable {
