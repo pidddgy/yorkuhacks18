@@ -2,6 +2,7 @@ var stream = new Vue({
   el: '#stream',
   data: {
     items: [],
+    userId: null,
   },
   methods: {
     writeUserData: function (comments, message, showLess, title, difficulty) {
@@ -15,14 +16,32 @@ var stream = new Vue({
         title: title,
         id: newPayloadRef.key,
         difficulty: difficulty
-      });
+      })
+
     },
-    writeComment: function(text, postID) {
-      console.log(text);
+    writeComment: function (text, postID) {
       var path = firebase.database().ref('items/' + postID + '/comments');
       path.push({
         text: text,
-        author:name,
+        author: name
+      })
+
+      stream.givePoints(50);
+    },
+    createUser: function (name) {
+      var path = firebase.database().ref('users');
+      var newUserPref = path.push();
+      newUserPref.set({
+        name: name,
+        points: 0,
+        id: newUserPref.key
+      });
+      userId = newUserPref.key;
+    },
+    givePoints: function (increment) {
+      var path = firebase.database().ref('users/' + userId + '/points');
+      path.transaction(function(points) {
+        return points + increment;
       })
     }
   }
@@ -64,7 +83,7 @@ var config = {
 };
 firebase.initializeApp(config);
 
-var ref = firebase.database().ref(); 
+var ref = firebase.database().ref();
 ref.on("value", function (snapshot) {
   var el = document.getElementById('data');
   //stream.$data.items = JSON.stringify(snapshot.val(), null, 2);
@@ -73,3 +92,5 @@ ref.on("value", function (snapshot) {
 });
 
 var name = prompt("Enter your name");
+
+stream.createUser(name);
