@@ -2,7 +2,9 @@ var stream = new Vue({
   el: '#stream',
   data: {
     items: [],
-    userId: null,
+    users: [],
+    showLeaderboard: false,
+    userId: null
   },
   methods: {
     writeUserData: function (comments, message, showLess, title, difficulty) {
@@ -45,8 +47,7 @@ var stream = new Vue({
       })
     }
   }
-})
-
+})    
 
 // Get the modal
 var modal = document.getElementById('myModal');
@@ -85,9 +86,16 @@ firebase.initializeApp(config);
 
 var ref = firebase.database().ref();
 ref.on("value", function (snapshot) {
-  var el = document.getElementById('data');
   //stream.$data.items = JSON.stringify(snapshot.val(), null, 2);
   stream.$data.items = snapshot.val();
+  console.log(snapshot.val())
+});
+
+var refUsers = firebase.database().ref('/users');
+
+refUsers.on("value", function (snapshot) {
+  //stream.$data.items = JSON.stringify(snapshot.val(), null, 2);
+  stream.$data.users = snapshot.val();
   console.log(snapshot.val())
 });
 

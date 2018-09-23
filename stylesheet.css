@@ -49,7 +49,35 @@ ul {
   right: 23;
 }
 
+#leaderboard {
+  width: 50px;
+  height: 50px;
+  padding: 2vw;
+  position: fixed;
+  bottom: 10;
+  left: 23;
+}
+
 .modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  padding-top: 100px;
+  /* Location of the box */
+  left: 20vw;
+  top: 0;
+  width: 60vw;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+}
+
+#table {
   display: none;
   /* Hidden by default */
   position: fixed;
@@ -106,4 +134,13 @@ ul {
 
 .wordBreakable {
   word-wrap: break-word;
+}
+
+#leaderboardButton{
+  width: 50px;
+  height: 50px;
+  padding: 2vw;
+  position: fixed;
+  bottom: 10;
+  left: 23;
 }
