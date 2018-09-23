@@ -4,16 +4,31 @@ var stream = new Vue({
     items: []
   },
   methods: {
-    writeUserData: function (userId, name, email, imageUrl) {
-      var path = firebase.database().ref('items');
+    writeUserData: function (author, comments, message, showLess, title) {
       var payload = {
-        username: name,
-        email: email,
-        profile_picture : imageUrl
+        author: author,
+        comments: comments,
+        message: message,
+        showLess: showLess,
+        title: title
       };
-      var res = path.push(payload);
-      path.set(payload);
-      console.log('user key', res.key);
+      var path = firebase.database().ref('items');
+      var newPayloadRef = path.push();
+      newPayloadRef.set({
+        author: author,
+        comments: comments,
+        message: message,
+        showLess: showLess,
+        title: title,
+        id: newPayloadRef.key
+      });
+    },
+    writeComment: function(text, postID) {
+      console.log(text);
+      var path = firebase.database().ref('items/' + postID + '/comments');
+      path.push({
+        text: text,
+      })
     }
   }
 })
@@ -61,3 +76,4 @@ ref.on("value", function (snapshot) {
   stream.$data.items = snapshot.val();
   console.log(snapshot.val())
 });
+

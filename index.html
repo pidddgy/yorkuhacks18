@@ -29,7 +29,7 @@
     <main class="mdl-layout__content">
       <div class="page-content">
         <ul id="stream">
-          <li class="item" v-for="item in items.items">
+          <li class="item" v-for="(item, index) in items.items">
             <div class="demo-card-wide mdl-card mdl-shadow--2dp">
               <div class="mdl-card__title">
                 <h3 class="mdl-card__title-text"> {{ item.title }} - {{ item.author }} </h2>
@@ -42,6 +42,12 @@
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="text" id="reply">
                     <label class="mdl-textfield__label" for="reply">Your answer...</label>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" v-on:Click="stream.writeComment(document.getElementById('reply').value, item.id)">
+                      POST
+                    </button>
                   </div>
                 </form>
               </div>
@@ -99,12 +105,17 @@
               <div class="mdl-card__supporting-text">
                 <form action="#">
                   <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input postQuestionTextBox" type="text" class="wordBreakable">
+                    <input class="mdl-textfield__input postQuestionTextBox" type="text" class="wordBreakable" id="postQuestionTitle">
                     <label class="mdl-textfield__label" for="sample1">Question</label>
                   </div>
                   <br />
                   <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input postQuestionTextBox" type="text">
+                      <input class="mdl-textfield__input postQuestionTextBox" type="text" class="wordBreakable" id="postAuthor">
+                      <label class="mdl-textfield__label" for="sample1">Post as....</label>
+                    </div>
+                  <br />
+                  <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input postQuestionTextBox" type="text" id="postQuestionAdditionalText">
                     <label class="mdl-textfield__label" for="sample1">Additional Text</label>
                   </div>
                   <p style="width:50vw;">
@@ -112,19 +123,13 @@
                     <input id="questionSlider" class="mdl-slider mdl-js-slider" type="range" min="0" max="100" value="0"
                       tabindex="0" step="10">
                   </p>
-                  <p> Anonymous? </p>
-                  <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
-                    <input type="checkbox" id="switch-1" class="mdl-switch__input" checked>
-                    <span class="mdl-switch__label"></span>
-                  </label>
-
-
                 </form>
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                <!-- <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id= "yeah" v-on:Click="console.log('dsfsd');writeUserData('','','','','')">
                   Post
-                </a>
+                </button> -->
+                <button onclick="stream.writeUserData (document.getElementById('postAuthor').value,[{author: '', text: ''}],document.getElementById('postQuestionAdditionalText').value,true, document.getElementById('postQuestionTitle').value) ">Say what</button>
               </div>
               <div class="mdl-card__menu">
                 <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
