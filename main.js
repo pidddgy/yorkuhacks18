@@ -1,10 +1,10 @@
 var stream = new Vue({
   el: '#stream',
   data: {
-    items: []
+    items: [],
   },
   methods: {
-    writeUserData: function (author, comments, message, showLess, title) {
+    writeUserData: function (comments, message, showLess, title, difficulty) {
       var path = firebase.database().ref('items');
       var newPayloadRef = path.push();
       newPayloadRef.set({
@@ -13,7 +13,8 @@ var stream = new Vue({
         message: message,
         showLess: showLess,
         title: title,
-        id: newPayloadRef.key
+        id: newPayloadRef.key,
+        difficulty: difficulty
       });
     },
     writeComment: function(text, postID) {
